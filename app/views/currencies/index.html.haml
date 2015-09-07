@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+    %h1 Available currencies
+
+    .list-group
+      - @currencies.each do |currency|
+        = link_to currency_path(currency), class: 'list-group-item' do
+          %h4.list-group-item-heading  #{ currency.code } - #{ currency.name }
+          %p.list-group-item-text Available in #{ currency.countries.count } #{ 'country'.pluralize(currency.countries.count) }

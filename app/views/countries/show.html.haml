@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    %h1 #{ @country.code } - #{ @country.name }
+
+    .list-group
+      - @country.currencies.each do |currency|
+        = link_to '#', class: 'list-group-item collect-currency', data: { 'currency-id' => currency.id, collected: currency.collected? } do
+          %h4.list-group-item-heading  #{ currency.code } - #{ currency.name }
+          %p.list-group-item-text Available in #{ currency.countries.count } #{ 'country'.pluralize(currency.countries.count) }
+          - if currency.collected?
+            %span.label.label-success{style: 'float: right;'} Collected
+            .clearfix

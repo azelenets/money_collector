@@ -24,6 +24,7 @@ module MoneyCollector
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
+      g.template_engine :haml
       g.assets false
       g.helper false
       g.test_framework :rspec,

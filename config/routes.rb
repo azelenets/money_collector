@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  root to: 'welcome#index'
+
+  resources :currencies, only: [:index, :show] do
+    put :collect, on: :member
+  end
+
+  resources :countries, only: [:index, :show] do
+    put :visit, on: :member
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

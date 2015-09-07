@@ -17,4 +17,8 @@ class Country < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :currencies
+
+  def visit
+    update!(visited: true)
+  end
 end
