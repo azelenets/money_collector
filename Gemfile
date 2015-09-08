@@ -32,4 +32,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
+  gem 'faker'
 end

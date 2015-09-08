@@ -18,6 +18,10 @@ class Country < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :currencies
 
+  #Validations
+  validates :name, presence: true, uniqueness: true
+  validates :code, presence: true, uniqueness: true
+
   def visit
     update!(visited: true)
   end
