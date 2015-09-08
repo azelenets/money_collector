@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Country do
   describe 'ActiveModel validations' do
     it { expect(subject).to validate_presence_of(:name) }

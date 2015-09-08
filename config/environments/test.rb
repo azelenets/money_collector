@@ -40,7 +40,7 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   config.server_port = 3987
-  config.server_host = "localhost:#{server_port}"
+  config.server_host = "localhost:#{config.server_port}"
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

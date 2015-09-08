@@ -2,7 +2,6 @@
 /vendor/bundle
 /vendor/ruby/
 *.rbc
-.rspec
 /log
 !/log/.keep
 /tmp
