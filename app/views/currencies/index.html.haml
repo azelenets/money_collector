@@ -6,4 +6,7 @@
       - @currencies.each do |currency|
         = link_to currency_path(currency), class: 'list-group-item' do
           %h4.list-group-item-heading  #{ currency.code } - #{ currency.name }
-          %p.list-group-item-text Available in #{ currency.countries.count } #{ 'country'.pluralize(currency.countries.count) }
+          %p.list-group-item-text
+            Available in #{ currency.countries.count } #{ 'country'.pluralize(currency.countries.count) }
+            %br
+            #{ currency.countries.not_visited.count } #{ 'country'.pluralize(currency.countries.not_visited.count) } waiting for your visit
