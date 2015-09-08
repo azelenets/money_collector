@@ -18,6 +18,8 @@
           = link_to 'Collected', currencies_path(collected: true)
         %li
           = link_to 'Not collected', currencies_path(not_collected: true)
+        %li
+          = link_to 'Country not visited', currencies_path(country_not_visited: true)
     %li.dropdown
       %a.dropdown-toggle{'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', href: '#', role: 'button'}
         Countries
