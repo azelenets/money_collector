@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    %h1 Trips
+
+    .list-group
+      - @trips.each do |trip|
+        = link_to trip_path(trip), class: 'list-group-item' do
+          %h4.list-group-item-heading  #{ trip.created_at } - #{ trip.end_date }
+          %p.list-group-item-text
+            #{ trip.countries.count } #{ 'country'.pluralize(trip.countries.count) } visited
+            %br
+            #{ trip.description }

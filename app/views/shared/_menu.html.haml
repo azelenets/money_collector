@@ -31,6 +31,8 @@
           = link_to 'Visited', countries_path(visited: true)
         %li
           = link_to 'Not visited', countries_path(not_visited: true)
+    %li
+      = link_to 'Trips', trips_path
   %ul.nav.navbar-nav.navbar-right
     %li
       %a{:href => 'login'} Login

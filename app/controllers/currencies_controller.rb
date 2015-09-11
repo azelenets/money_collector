@@ -14,6 +14,4 @@ class CurrenciesController < ApplicationController
   def show
     @currency = Currency.find(params[:id])
   end
-
-  def collect;  end
 end

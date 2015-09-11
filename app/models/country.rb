@@ -17,12 +17,13 @@ class Country < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :currencies
+  has_and_belongs_to_many :trips
 
   #Validations
   validates :name, presence: true, uniqueness: true
   validates :code, presence: true, uniqueness: true
 
-  def visit
+  def visit!
     update!(visited: true)
   end
 end

@@ -15,7 +15,7 @@ class CountriesController < ApplicationController
 
   def visit
     country = Country.find(params[:id])
-    country.visit
+    country.visit!
 
     render json: {
              status: 200,

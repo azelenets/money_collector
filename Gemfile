@@ -22,15 +22,16 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'faker'
 end
 
 group :test do
   gem 'thin'
   gem 'shoulda-matchers'
+  gem 'shoulda-kept-respond-with-content-type'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'faker'
 end

@@ -2,7 +2,7 @@ module Faker
   class Currency < Base
     class << self
       def name
-        parse('currency.name')
+        fetch('currency.name')
       end
 
       def code
