@@ -5,7 +5,7 @@
     .list-group
       - @currencies.each do |currency|
         = link_to currency_path(currency), class: 'list-group-item' do
-          %h4.list-group-item-heading  #{ currency.code } - #{ currency.name }
+          %h4.list-group-item-heading #{ currency.name } [ #{ currency.code } ]
           %p.list-group-item-text
             Available in #{ currency.countries.count } #{ 'country'.pluralize(currency.countries.count) }
             %br

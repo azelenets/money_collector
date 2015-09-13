@@ -24,6 +24,7 @@ class Country < ActiveRecord::Base
   validates :code, presence: true, uniqueness: true
 
   def visit!
+    currencies.map{ |currency| currency.collect! }
     update!(visited: true)
   end
 end

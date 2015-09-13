@@ -19,10 +19,10 @@ class Currency < ActiveRecord::Base
   has_and_belongs_to_many :countries
 
   #Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :code, presence: true, uniqueness: true
 
-  def collect
+  def collect!
     update!(collected: true)
   end
 end

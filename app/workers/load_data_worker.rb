@@ -14,7 +14,7 @@ require 'savon'
 # ]
 class LoadDataWorker
   include Sidekiq::Worker
-  # sidekiq_options queue: :crawler, retry: false, backtrace: true
+  sidekiq_options retry: false, backtrace: true
 
   def perform(*params)
     parser, client = Nori.new, Savon.client(wsdl: 'http://www.webservicex.net/country.asmx?WSDL')
@@ -23,8 +23,11 @@ class LoadDataWorker
     get_currency_code_parsed['NewDataSet']['Table'].each do |data|
       unless data['Currency'].blank?
         country = Country.find_or_create_by!(name: data['Name'], code: data['CountryCode'])
-        currency = Currency.find_or_create_by!(name: data['Currency'], code: data['CurrencyCode'])
-        unless country.currencies.find_by(name: currency.name).present?
+        currency = Currency.find_by(code: data['CurrencyCode'])
+        unless currency.present?
+          currency = Currency.create!(name: data['Currency'], code: data['CurrencyCode'])
+        end
+        unless country.currencies.find_by(code: currency.code).present?
           country.currencies << currency
           country.save!
         end

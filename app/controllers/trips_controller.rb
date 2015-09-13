@@ -1,30 +1,45 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    @trips = Trip.includes(:countries).all
   end
 
   def show
-    @trip = Trip.find(params[:id])
+    @trip = Trip.includes(:countries).find(params[:id])
   end
 
   def new
     @trip = Trip.new
   end
 
+  def edit
+    @trip = Trip.includes(:countries).find(params[:id])
+  end
+
   def create
-    flash[:notice] = 'Trip successfully created.'
-    redirect_to trips_path
+    trip = Trip.new(create_params)
+    if trip.save
+      redirect_to trips_path, notice: 'Trip successfully created.'
+    else
+      redirect_to :back, alert: 'Errors happened during creating.'
+    end
   end
 
   def destroy
-    flash[:alert] = 'Trip successfully deleted.'
-    redirect_to trips_path
+    trip = Trip.find(params[:id])
+    if trip.destroy
+      redirect_to trips_path, notice: 'Trip successfully deleted.'
+    else
+      redirect_to :back, alert: 'Errors happened during deleting.'
+    end
   end
 
   def finish
     trip = Trip.find(params[:id])
     trip.finish!
+    redirect_to trips_path, notice: 'Trip successfully finished.'
+  end
 
-    redirect_to trips_path
+  def create_params
+    params.require(:trip).permit(:end_date, :description, country_ids: [])
   end
 end

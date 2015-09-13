@@ -1,0 +1,16 @@
+.row
+  .col-xs-12
+    = button_to 'Delete', trip_path(@trip), class: 'btn btn-danger btn-delete', type: :button, method: :delete
+    - unless @trip.finished?
+      = button_to 'Finish', finish_trip_path(@trip), class: 'btn btn-primary btn-finish', type: :button, method: :put
+      = button_to 'Edit', edit_trip_path(@trip), class: 'btn btn-warning btn-edit', type: :button, method: :get
+    %h1 Show trip (#{ @trip.created_at.strftime('%F') } - #{ @trip.end_date.strftime('%F') })
+
+    .list-group
+    - @trip.countries.each do |country|
+      = link_to '#', class: 'list-group-item visit-country', data: { 'country-id' => country.id, visited: country.visited? } do
+        %h4.list-group-item-heading
+          - if country.visited?
+            %span.label.label-success Visited
+          #{ country.name } [ #{ country.code } ]
+        %p.list-group-item-text Has #{ country.currencies.count } #{ 'currency'.pluralize(country.currencies.count) }

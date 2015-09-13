@@ -14,7 +14,6 @@ describe Currency do
   describe 'ActiveModel validations' do
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:code) }
-    it { expect(subject).to validate_uniqueness_of(:name) }
     it { expect(subject).to validate_uniqueness_of(:code) }
   end
 

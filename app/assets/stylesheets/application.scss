@@ -1,2 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "rails_bootstrap_forms";
+
+.btn-delete, .btn-create{
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.btn-finish, .btn-edit{
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.list-group-item-text{
+  margin-top: 10px;
+}

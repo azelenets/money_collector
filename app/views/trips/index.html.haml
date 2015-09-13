@@ -1,12 +1,14 @@
 .row
   .col-xs-12
+    = link_to 'Create trip', new_trip_path, class: 'btn btn-success btn-create', type: :button
     %h1 Trips
 
     .list-group
       - @trips.each do |trip|
         = link_to trip_path(trip), class: 'list-group-item' do
-          %h4.list-group-item-heading  #{ trip.created_at } - #{ trip.end_date }
+          %h4.list-group-item-heading  #{ trip.created_at.strftime('%F') } - #{ trip.end_date.strftime('%F') }
+          - if trip.finished?
+            %span.label.label-success Finished
+          #{ trip.countries.visited.count }/#{ trip.countries.count } #{ 'country'.pluralize(trip.countries.visited.count) } visited
           %p.list-group-item-text
-            #{ trip.countries.count } #{ 'country'.pluralize(trip.countries.count) } visited
-            %br
             #{ trip.description }

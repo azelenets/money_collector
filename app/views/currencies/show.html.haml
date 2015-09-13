@@ -4,9 +4,9 @@
 
     .list-group
       - @currency.countries.each do |country|
-        = link_to '#', class: 'list-group-item visit-country', data: { 'country-id' => country.id, visited: country.visited? } do
-          %h4.list-group-item-heading  #{ country.code } - #{ country.name }
+        = link_to '', class: 'list-group-item visit-country', data: { 'country-id' => country.id, visited: country.visited? } do
+          %h4.list-group-item-heading
+            - if country.visited?
+              %span.label.label-success Visited
+            #{ country.name } [ #{ country.code } ]
           %p.list-group-item-text Has #{ country.currencies.count } #{ 'currency'.pluralize(country.currencies.count) }
-          - if country.visited?
-            %span.label.label-success{style: 'float: right;'} Visited
-            .clearfix

@@ -1,6 +1,6 @@
 $ ->
-  $('.visit-country').click (e) ->
-    e.preventDefault
+  $('.visit-country').on 'click', (event) ->
+    event.preventDefault()
     element = $(this)
     unless element.data('visited')
       $.ajax
@@ -9,7 +9,7 @@ $ ->
         dataType: 'json'
         data: ''
         success: (response) ->
-          element.append(response.html)
+          element.find('.list-group-item-heading').prepend(response.html)
           element.data('visited', true)
         error: (response) ->
           alert 'Error' + response.status + '.'

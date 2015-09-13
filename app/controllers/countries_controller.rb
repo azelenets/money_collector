@@ -19,7 +19,7 @@ class CountriesController < ApplicationController
 
     render json: {
              status: 200,
-             html: '<span class="label label-success" style="float: right;">Visited</span><div class="clearfix"></div>'
+             html: '<span class="label label-success">Visited</span>'
            }
   end
 end
