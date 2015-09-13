@@ -1,6 +1,7 @@
 .row
   .col-xs-12
-    = link_to 'Create trip', new_trip_path, class: 'btn btn-success btn-create', type: :button
+    - if user_signed_in?
+      = link_to 'Create trip', new_trip_path, class: 'btn btn-success btn-create', type: :button
     %h1 Trips
 
     .list-group

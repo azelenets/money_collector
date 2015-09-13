@@ -12,5 +12,5 @@ $ ->
           element.find('.list-group-item-heading').prepend(response.html)
           element.data('visited', true)
         error: (response) ->
-          alert 'Error' + response.status + '.'
-          console.log response
+          json = JSON.parse(response.responseText)
+          alert json.error
