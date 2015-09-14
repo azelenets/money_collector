@@ -1,5 +1,22 @@
 # Money collector
 
+## Installation
+
+$ git checkout git@github.com:azelenets/money_collector.git
+$ cd money_collector
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
+$ bundle exec sidekiq
+$ rails s
+
+Mr. Smart credentials:
+    mr.smart@moneycollector.com
+    password
+
+## Story
+
 Implement a rails application that satisfies the requirement in the story below.
 The rails application must use the following [web service](http://www.webservicex.net/country.asmx?WSDL) to retrieve the data for the application.
 
