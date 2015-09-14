@@ -2,17 +2,26 @@
 
 ## Installation
 
-$ git checkout git@github.com:azelenets/money_collector.git
-$ cd money_collector
-$ bundle install
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
-$ bundle exec sidekiq
-$ rails s
+$ > git checkout git@github.com:azelenets/money_collector.git
+
+$ > cd money_collector
+
+$ > bundle install
+
+$ > rake db:create
+
+$ > rake db:migrate
+
+$ > rake db:seed
+
+$ > bundle exec sidekiq
+
+$ > rails s
 
 Mr. Smart credentials:
+
     mr.smart@moneycollector.com
+
     password
 
 ## Story
