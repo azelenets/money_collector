@@ -22,7 +22,10 @@ class LoadDataWorker
     get_currency_code_parsed = parser.parse(response.body[:get_currencies_response][:get_currencies_result])
     get_currency_code_parsed['NewDataSet']['Table'].each do |data|
       unless data['Currency'].blank?
-        country = Country.find_or_create_by!(name: data['Name'], code: data['CountryCode'])
+        country = Country.find_by(code: data['CountryCode'])
+        unless country.present?
+          country = Country.create!(name: data['Name'], code: data['CountryCode'])
+        end
         currency = Currency.find_by(code: data['CurrencyCode'])
         unless currency.present?
           currency = Currency.create!(name: data['Currency'], code: data['CurrencyCode'])

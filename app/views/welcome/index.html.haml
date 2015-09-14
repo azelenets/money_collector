@@ -1,3 +1,11 @@
 / Main component for a primary marketing message or call to action
 .jumbotron
-  %h1 Money collector
+  .panel.panel-default
+    .panel-body
+      #{ @currencies.count } currencies total / #{ @currencies.collected.count } collected
+  .panel.panel-default
+    .panel-body
+      #{ @countries.count } countries total / #{ @countries.visited.count } visited
+  .panel.panel-default
+    .panel-body
+      #{ @trips.count } trips total / #{ @trips.finished.count } finished

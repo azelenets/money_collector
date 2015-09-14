@@ -1,3 +1,7 @@
 class WelcomeController < ApplicationController
-  def index; end
+  def index
+    @trips = Trip.all
+    @countries = Country.all
+    @currencies = Currency.all
+  end
 end
