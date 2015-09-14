@@ -38,4 +38,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
+  gem 'rspec-sidekiq'
 end

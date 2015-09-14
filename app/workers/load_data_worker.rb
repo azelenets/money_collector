@@ -14,7 +14,7 @@ require 'savon'
 # ]
 class LoadDataWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false, backtrace: true
+  sidekiq_options retry: false, backtrace: true, unique: true
 
   def perform(*params)
     parser, client = Nori.new, Savon.client(wsdl: 'http://www.webservicex.net/country.asmx?WSDL')
