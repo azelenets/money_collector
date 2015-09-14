@@ -34,7 +34,8 @@ group :test do
   gem 'shoulda-kept-respond-with-content-type'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'capybara-webkit'
+  # gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
 end

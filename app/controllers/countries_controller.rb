@@ -1,4 +1,6 @@
 class CountriesController < ApplicationController
+  before_action :authenticate_user!, only: [ :visit ]
+
   def index
     if params[:visited]
       @countries = Country.includes(:currencies).visited

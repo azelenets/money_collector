@@ -5,13 +5,9 @@ Rails.application.routes.draw do
 
   resources :currencies, only: [:index, :show]
   resources :countries, only: [:index, :show] do
-    authenticate :user do
-      put :visit, on: :member
-    end
+    put :visit, on: :member
   end
   resources :trips do
-    authenticate :user do
-      put :finish, on: :member
-    end
+    put :finish, on: :member
   end
 end

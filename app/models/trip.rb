@@ -15,6 +15,7 @@ class Trip < ActiveRecord::Base
   has_many :currencies, through: :countries
 
   #Validations
+  validate :require_at_least_one_country
   validates :description, presence: true
   validates :end_date, presence: true
 
@@ -24,5 +25,13 @@ class Trip < ActiveRecord::Base
 
   def finished?
     countries.all?{ |country| country.visited? }
+  end
+
+  private
+
+  def require_at_least_one_country
+    if country_ids.empty? && countries.count == 0
+      errors.add(:base, 'Please select at least one country')
+    end
   end
 end

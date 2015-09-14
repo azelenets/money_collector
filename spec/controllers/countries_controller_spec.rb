@@ -15,11 +15,22 @@ describe CountriesController do
     it { is_expected.to render_template :show }
   end
 
-  describe 'POST #visit' do
-    before { put :visit, id: create(:country) }
-    it { is_expected.to respond_with :ok }
-    it { is_expected.to respond_with_content_type :json }
-    it { is_expected.not_to render_with_layout }
-    it { is_expected.to render_template nil }
+  context 'user logged in' do
+    login_user
+
+    describe 'POST #visit' do
+      before { put :visit, id: create(:country) }
+      it { is_expected.to respond_with :ok }
+      it { is_expected.to respond_with_content_type :json }
+      it { is_expected.not_to render_with_layout }
+      it { is_expected.to render_template nil }
+    end
+  end
+
+  context 'user logged in' do
+    describe 'POST #visit' do
+      before { put :visit, id: create(:country) }
+      it { is_expected.to redirect_to new_user_session_path }
+    end
   end
 end

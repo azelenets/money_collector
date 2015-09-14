@@ -10,7 +10,7 @@ RSpec.configure do
 
   Capybara.configure do |config|
     config.default_driver = :webkit
-    config.javascript_driver = :webkit # :selenium
+    config.javascript_driver = :selenium # :webkit
     # config.default_wait_time = 5
     config.run_server = true
     config.server_port = Rails.configuration.server_port
