@@ -26,5 +26,6 @@ class Country < ActiveRecord::Base
   def visit!
     currencies.map{ |currency| currency.collect! }
     update!(visited: true)
+    self
   end
 end

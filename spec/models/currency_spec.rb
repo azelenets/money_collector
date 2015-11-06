@@ -11,13 +11,22 @@
 #
 
 describe Currency do
+  subject(:currency) { create(:currency) }
+
   describe 'ActiveModel validations' do
-    it { expect(subject).to validate_presence_of(:name) }
-    it { expect(subject).to validate_presence_of(:code) }
-    it { expect(subject).to validate_uniqueness_of(:code) }
+    it { expect(currency).to validate_presence_of(:name) }
+    it { expect(currency).to validate_presence_of(:code) }
+    it { expect(currency).to validate_uniqueness_of(:code) }
   end
 
   describe 'ActiveRecord associations' do
-    it { expect(subject).to have_and_belong_to_many(:countries) }
+    it { expect(currency).to have_and_belong_to_many(:countries) }
+  end
+
+  describe 'ActiveRecord model methods' do
+    it { expect(currency).to respond_to(:collect!) }
+    it '#collect! should change visited attribute' do
+      expect{ currency.collect! }.to change{ currency.collected }.from(false).to(true)
+    end
   end
 end

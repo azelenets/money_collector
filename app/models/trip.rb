@@ -10,8 +10,7 @@
 #
 
 class Trip < ActiveRecord::Base
-  scope :finished, -> { includes(:countries).where(countries: { visited: true }) }
-  scope :unfinished, -> { includes(:countries).where(countries: { visited: false }) }
+  scope :finished, -> (finished) { includes(:countries).where(countries: { visited: finished }) }
 
   # Associations
   has_and_belongs_to_many :countries
